@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^GenericBlock)(BOOL success, NSString * _Nullable resultString);
+
 @interface Service : NSObject
+
++ (id)shared;
+//- (void) fetchAlbums;
+//- (void)fetchAlbums:(void (^)(NSString *result))completion;
+
+- (void)testMethodWidthCompletion:(nullable GenericBlock) completion;
 
 @end

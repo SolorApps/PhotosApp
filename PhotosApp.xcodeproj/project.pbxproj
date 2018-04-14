@@ -13,6 +13,12 @@
 		CDBBF94D20800AEE00836135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDBBF94C20800AEE00836135 /* Assets.xcassets */; };
 		CDBBF95020800AEE00836135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDBBF94E20800AEE00836135 /* LaunchScreen.storyboard */; };
 		CDBBF95320800AEE00836135 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBBF95220800AEE00836135 /* main.m */; };
+		CDBBF95F20800BBE00836135 /* PhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBBF95D20800BBE00836135 /* PhotosCollectionViewController.m */; };
+		CDBBF96020800BBE00836135 /* PhotosCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDBBF95E20800BBE00836135 /* PhotosCollectionViewController.xib */; };
+		CDBBF96520801D5300836135 /* PhotosCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBBF96320801D5300836135 /* PhotosCollectionViewCell.m */; };
+		CDBBF96620801D5300836135 /* PhotosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDBBF96420801D5300836135 /* PhotosCollectionViewCell.xib */; };
+		CDCB148B208156AB00A060D4 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB148A208156AB00A060D4 /* Album.m */; };
+		CDCB148F208156FA00A060D4 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCB148E208156FA00A060D4 /* Service.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,16 @@
 		CDBBF94F20800AEE00836135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDBBF95120800AEE00836135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDBBF95220800AEE00836135 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CDBBF95C20800BBE00836135 /* PhotosCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosCollectionViewController.h; sourceTree = "<group>"; };
+		CDBBF95D20800BBE00836135 /* PhotosCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotosCollectionViewController.m; sourceTree = "<group>"; };
+		CDBBF95E20800BBE00836135 /* PhotosCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosCollectionViewController.xib; sourceTree = "<group>"; };
+		CDBBF96220801D5300836135 /* PhotosCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosCollectionViewCell.h; sourceTree = "<group>"; };
+		CDBBF96320801D5300836135 /* PhotosCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotosCollectionViewCell.m; sourceTree = "<group>"; };
+		CDBBF96420801D5300836135 /* PhotosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosCollectionViewCell.xib; sourceTree = "<group>"; };
+		CDCB1489208156AB00A060D4 /* Album.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Album.h; sourceTree = "<group>"; };
+		CDCB148A208156AB00A060D4 /* Album.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
+		CDCB148D208156FA00A060D4 /* Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
+		CDCB148E208156FA00A060D4 /* Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Service.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +74,9 @@
 		CDBBF94220800AEE00836135 /* PhotosApp */ = {
 			isa = PBXGroup;
 			children = (
+				CDCB14872081568800A060D4 /* Model */,
+				CDBBF96120801D1D00836135 /* View */,
+				CDBBF95B20800B5C00836135 /* Controller */,
 				CDBBF94320800AEE00836135 /* AppDelegate.h */,
 				CDBBF94420800AEE00836135 /* AppDelegate.m */,
 				CDBBF94620800AEE00836135 /* ViewController.h */,
@@ -69,6 +88,37 @@
 				CDBBF95220800AEE00836135 /* main.m */,
 			);
 			path = PhotosApp;
+			sourceTree = "<group>";
+		};
+		CDBBF95B20800B5C00836135 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CDBBF95C20800BBE00836135 /* PhotosCollectionViewController.h */,
+				CDBBF95D20800BBE00836135 /* PhotosCollectionViewController.m */,
+				CDBBF95E20800BBE00836135 /* PhotosCollectionViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CDBBF96120801D1D00836135 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CDBBF96220801D5300836135 /* PhotosCollectionViewCell.h */,
+				CDBBF96320801D5300836135 /* PhotosCollectionViewCell.m */,
+				CDBBF96420801D5300836135 /* PhotosCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CDCB14872081568800A060D4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CDCB1489208156AB00A060D4 /* Album.h */,
+				CDCB148A208156AB00A060D4 /* Album.m */,
+				CDCB148D208156FA00A060D4 /* Service.h */,
+				CDCB148E208156FA00A060D4 /* Service.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,8 +180,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDBBF95020800AEE00836135 /* LaunchScreen.storyboard in Resources */,
+				CDBBF96620801D5300836135 /* PhotosCollectionViewCell.xib in Resources */,
 				CDBBF94D20800AEE00836135 /* Assets.xcassets in Resources */,
 				CDBBF94B20800AEE00836135 /* Main.storyboard in Resources */,
+				CDBBF96020800BBE00836135 /* PhotosCollectionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,7 +195,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDBBF94820800AEE00836135 /* ViewController.m in Sources */,
+				CDBBF96520801D5300836135 /* PhotosCollectionViewCell.m in Sources */,
 				CDBBF95320800AEE00836135 /* main.m in Sources */,
+				CDCB148B208156AB00A060D4 /* Album.m in Sources */,
+				CDBBF95F20800BBE00836135 /* PhotosCollectionViewController.m in Sources */,
+				CDCB148F208156FA00A060D4 /* Service.m in Sources */,
 				CDBBF94520800AEE00836135 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

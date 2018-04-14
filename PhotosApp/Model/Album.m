@@ -10,4 +10,11 @@
 
 @implementation Album
 
+- (id)initWithDictionary:(NSDictionary *)dictionary {
+    if ( self = [super init] ) {
+        self.title = dictionary[@"title"];
+    }
+    return self;
+}
+
 @end

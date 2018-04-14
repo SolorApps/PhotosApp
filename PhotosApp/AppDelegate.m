@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "PhotosCollectionViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.window = UIWindow.new;
+    [self.window makeKeyAndVisible];
+    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout alloc];
+    PhotosCollectionViewController *collectionView = [PhotosCollectionViewController alloc];
+    
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController: collectionView] ;
+    
     return YES;
 }
 
