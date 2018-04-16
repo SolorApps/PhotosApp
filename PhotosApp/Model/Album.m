@@ -10,9 +10,12 @@
 
 @implementation Album
 
-- (id)initWithDictionary:(NSDictionary *)dictionary {
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     if ( self = [super init] ) {
-        self.title = dictionary[@"title"];
+        _albumId = [dictionary[@"albumId"] intValue];
+        _title = dictionary[@"title"];
+        _url = dictionary[@"url"];
+        _thumbnailUrl = dictionary[@"thumbnailUrl"];
     }
     return self;
 }

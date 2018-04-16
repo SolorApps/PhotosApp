@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CachedImageView.h"
 
 @interface PhotosCollectionViewCell : UICollectionViewCell
+// MARK:- IBOutlet
+@property (weak, nonatomic) IBOutlet CachedImageView *imageView;
 
 @end

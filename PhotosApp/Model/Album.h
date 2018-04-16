@@ -10,12 +10,12 @@
 
 @interface Album : NSObject
 
-@property (strong,nonatomic) NSNumber *albumId;
-@property (strong,nonatomic) NSString *title;
-@property (strong,nonatomic) NSString *url;
-@property (strong,nonatomic) NSString *thumbnailUrl;
+@property (nonatomic,readonly) int albumId;
+@property (copy,nonatomic,readonly,nonnull) NSString *title;
+@property (copy,nonatomic,readonly,nonnull) NSString *url;
+@property (copy,nonatomic,readonly,nonnull) NSString *thumbnailUrl;
 
-- (id)initWithDictionary:(NSDictionary *)dictionary;
+- (nonnull instancetype)initWithDictionary:(nonnull NSDictionary *)dictionary;
 
 
 @end

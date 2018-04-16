@@ -7,15 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef void(^GenericBlock)(BOOL success, NSString * _Nullable resultString);
+#import "Album.h"
 
 @interface Service : NSObject
 
-+ (id)shared;
-//- (void) fetchAlbums;
-//- (void)fetchAlbums:(void (^)(NSString *result))completion;
++ (nonnull instancetype)shared;
 
-- (void)testMethodWidthCompletion:(nullable GenericBlock) completion;
+- (void) fetchAlbums:(nullable void(^)(NSArray<Album *>* _Nullable albums, NSError  * _Nullable error)) completion;
 
 @end

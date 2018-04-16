@@ -8,28 +8,32 @@
 
 #import "PhotosCollectionViewController.h"
 #import "PhotosCollectionViewCell.h"
+#import "PhotoViewController.h"
 #import "Album.h"
 #import "Service.h"
 
 @interface PhotosCollectionViewController ()
 
+// MARK:- IBOutlet, property
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (strong, nonatomic) NSMutableArray<Album *> *albums;
-
 @end
 
 @implementation PhotosCollectionViewController
 
+// MARK:- Variables
 NSString * const reuseIdentifier = @"PhotosCollectionViewCell";
 CGFloat space =  1;
 
+// MARK:- Live Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setupView];
 }
 
-// Setting up view
+// MARK: - SetupViews
 - (void)setupView {
     
     //setup navigation
@@ -37,71 +41,40 @@ CGFloat space =  1;
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.title = @"Photos App";
     self.navigationController.navigationBar.prefersLargeTitles = YES;
-//    NSLog(@"%@", cellId);
     
     //setup collection view
     [self.collectionView registerNib:[UINib nibWithNibName:reuseIdentifier bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     
-    [self setupAlbums];
+    //request albums from server
+    [self fetchAlbums];
     
+}
+
+// MARK: - Methods
+
+//gets all albums from the server
+- (void) fetchAlbums {
+    [self.activityIndicatorView startAnimating];
     Service *service = [Service shared];
-  
-//    [service fetchAlbums:^(NSString *result) {
-//        <#code#>
-//    }];
     
-}
-
-- (void) setupAlbums {
-    self.albums = NSMutableArray.new;
-    Album *album = Album.new;
-    album.albumId = @(1);
-    album.title = @"title";
-    album.url = @"url";
-    album.thumbnailUrl = @"thumbnailUrl";
-    [self.albums addObject:album];
-    [self.collectionView reloadData];
-}
-
-- (void) fetch {
-    NSString *urlString = @"https://jsonplaceholder.typicode.com/photos";
-    NSURL *url = [NSURL URLWithString:urlString];
-    [[NSURLSession.sharedSession dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSLog(@"finished fetching");
-        
-        NSError *err;
-        NSArray *albumsJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
-        
-        if (err) {
-            NSLog(@"Failded to serialed json %@", err);
-            return;
+    [service fetchAlbums:^(NSArray<Album *> * _Nullable albums, NSError * _Nullable error) {
+        if (error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.activityIndicatorView startAnimating];
+            });
+        } else {
+            if (albums) {
+                self.albums = (id) albums;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.collectionView reloadData];
+                    [self.activityIndicatorView startAnimating];
+                });
+            }
         }
-        
-        NSMutableArray<Album *> *albums = NSMutableArray.new;
-        for (NSDictionary *albumDict in albumsJSON) {
-            
-        }
-        
-        
-    }] resume];
-    
+    }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
+// MARK: - UICollectionViewDataDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.albums.count;
 }
@@ -109,7 +82,7 @@ CGFloat space =  1;
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PhotosCollectionViewCell * const cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     Album *album = self.albums[indexPath.row];
-    NSLog(@"%@", album.title);
+    [cell.imageView loadImage:album.thumbnailUrl with:nil];
     return cell;
 }
 
@@ -127,9 +100,11 @@ CGFloat space =  1;
     return space;
 }
 
-//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-//    return UIEdgeInsetsMake(0, 0, 0, 0);
-//}
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    Album *album = self.albums[indexPath.row];
+    PhotoViewController *photoViewController = PhotoViewController.new;
+    photoViewController.album = album;
+    [self.navigationController pushViewController:photoViewController animated:YES];
+}
 
 @end

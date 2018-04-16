@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotosCollectionViewController">
             <connections>
+                <outlet property="activityIndicatorView" destination="dkr-Gm-u9l" id="XGV-yt-bek"/>
                 <outlet property="collectionView" destination="9OB-vg-meD" id="Wle-OM-PaC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -35,9 +36,14 @@
                         <outlet property="delegate" destination="-1" id="AvR-nQ-DGy"/>
                     </connections>
                 </collectionView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dkr-Gm-u9l">
+                    <rect key="frame" x="177.66666666666666" y="396" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <constraints>
+                <constraint firstItem="dkr-Gm-u9l" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="6zE-ym-9ar"/>
                 <constraint firstItem="9OB-vg-meD" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="ciJ-hV-lli"/>
+                <constraint firstItem="dkr-Gm-u9l" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="iR4-ul-iTU"/>
                 <constraint firstItem="9OB-vg-meD" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="lnh-Ip-fbg"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="9OB-vg-meD" secondAttribute="trailing" id="sBA-rC-uTv"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="9OB-vg-meD" secondAttribute="bottom" id="z9Z-i6-eis"/>
